@@ -1,0 +1,1517 @@
+{
+  "files": {
+    "ca_ancora": {
+      "conll_score": 38.54,
+      "metric_names": [
+        "muc",
+        "bcub",
+        "ceafe",
+        "ceafm",
+        "blanc",
+        "lea",
+        "mor",
+        "zero"
+      ],
+      "metrics": {
+        "bcub": {
+          "f1": 33.6,
+          "precision": 69.4,
+          "recall": 22.17
+        },
+        "blanc": {
+          "f1": 23.04,
+          "precision": 65.19,
+          "recall": 14.21
+        },
+        "ceafe": {
+          "f1": 38.67,
+          "precision": 63.29,
+          "recall": 27.84
+        },
+        "ceafm": {
+          "f1": 44.43,
+          "precision": 74.83,
+          "recall": 31.59
+        },
+        "lea": {
+          "f1": 29.14,
+          "precision": 63.56,
+          "recall": 18.9
+        },
+        "mor": {
+          "f1": 45.8,
+          "precision": 87.83,
+          "recall": 30.98
+        },
+        "muc": {
+          "f1": 43.34,
+          "precision": 73.83,
+          "recall": 30.68
+        },
+        "zero": {
+          "f1": 0.47,
+          "precision": 33.33,
+          "recall": 0.24
+        }
+      },
+      "path": "ca_ancora-scores.txt"
+    },
+    "cs_pcedt": {
+      "conll_score": 35.21,
+      "metric_names": [
+        "muc",
+        "bcub",
+        "ceafe",
+        "ceafm",
+        "blanc",
+        "lea",
+        "mor",
+        "zero"
+      ],
+      "metrics": {
+        "bcub": {
+          "f1": 31.31,
+          "precision": 50.15,
+          "recall": 22.76
+        },
+        "blanc": {
+          "f1": 23.23,
+          "precision": 47.57,
+          "recall": 15.64
+        },
+        "ceafe": {
+          "f1": 32.39,
+          "precision": 53.16,
+          "recall": 23.29
+        },
+        "ceafm": {
+          "f1": 39.02,
+          "precision": 55.03,
+          "recall": 30.23
+        },
+        "lea": {
+          "f1": 26.18,
+          "precision": 44.19,
+          "recall": 18.6
+        },
+        "mor": {
+          "f1": 51.48,
+          "precision": 78.52,
+          "recall": 38.29
+        },
+        "muc": {
+          "f1": 41.93,
+          "precision": 56.43,
+          "recall": 33.36
+        },
+        "zero": {
+          "f1": 16.86,
+          "precision": 40.21,
+          "recall": 10.67
+        }
+      },
+      "path": "cs_pcedt-scores.txt"
+    },
+    "cs_pdt": {
+      "conll_score": 44.0,
+      "metric_names": [
+        "muc",
+        "bcub",
+        "ceafe",
+        "ceafm",
+        "blanc",
+        "lea",
+        "mor",
+        "zero"
+      ],
+      "metrics": {
+        "bcub": {
+          "f1": 40.56,
+          "precision": 58.91,
+          "recall": 30.93
+        },
+        "blanc": {
+          "f1": 29.18,
+          "precision": 56.14,
+          "recall": 20.02
+        },
+        "ceafe": {
+          "f1": 44.6,
+          "precision": 60.47,
+          "recall": 35.33
+        },
+        "ceafm": {
+          "f1": 48.0,
+          "precision": 65.22,
+          "recall": 37.98
+        },
+        "lea": {
+          "f1": 34.6,
+          "precision": 51.86,
+          "recall": 25.96
+        },
+        "mor": {
+          "f1": 55.08,
+          "precision": 83.62,
+          "recall": 41.07
+        },
+        "muc": {
+          "f1": 46.83,
+          "precision": 63.68,
+          "recall": 37.03
+        },
+        "zero": {
+          "f1": 17.09,
+          "precision": 36.96,
+          "recall": 11.11
+        }
+      },
+      "path": "cs_pdt-scores.txt"
+    },
+    "cs_pdtsc": {
+      "conll_score": 41.55,
+      "metric_names": [
+        "muc",
+        "bcub",
+        "ceafe",
+        "ceafm",
+        "blanc",
+        "lea",
+        "mor",
+        "zero"
+      ],
+      "metrics": {
+        "bcub": {
+          "f1": 37.33,
+          "precision": 40.72,
+          "recall": 34.46
+        },
+        "blanc": {
+          "f1": 33.05,
+          "precision": 40.03,
+          "recall": 29.25
+        },
+        "ceafe": {
+          "f1": 40.07,
+          "precision": 53.07,
+          "recall": 32.19
+        },
+        "ceafm": {
+          "f1": 45.97,
+          "precision": 52.99,
+          "recall": 40.59
+        },
+        "lea": {
+          "f1": 31.19,
+          "precision": 34.34,
+          "recall": 28.56
+        },
+        "mor": {
+          "f1": 48.19,
+          "precision": 62.42,
+          "recall": 39.24
+        },
+        "muc": {
+          "f1": 47.26,
+          "precision": 52.46,
+          "recall": 42.99
+        },
+        "zero": {
+          "f1": 42.25,
+          "precision": 46.52,
+          "recall": 38.71
+        }
+      },
+      "path": "cs_pdtsc-scores.txt"
+    },
+    "cu_proiel": {
+      "conll_score": 27.9,
+      "metric_names": [
+        "muc",
+        "bcub",
+        "ceafe",
+        "ceafm",
+        "blanc",
+        "lea",
+        "mor",
+        "zero"
+      ],
+      "metrics": {
+        "bcub": {
+          "f1": 20.2,
+          "precision": 25.63,
+          "recall": 16.66
+        },
+        "blanc": {
+          "f1": 19.06,
+          "precision": 28.67,
+          "recall": 14.52
+        },
+        "ceafe": {
+          "f1": 25.73,
+          "precision": 32.68,
+          "recall": 21.22
+        },
+        "ceafm": {
+          "f1": 28.73,
+          "precision": 36.21,
+          "recall": 23.81
+        },
+        "lea": {
+          "f1": 16.29,
+          "precision": 20.78,
+          "recall": 13.4
+        },
+        "mor": {
+          "f1": 46.71,
+          "precision": 67.8,
+          "recall": 35.63
+        },
+        "muc": {
+          "f1": 37.78,
+          "precision": 47.56,
+          "recall": 31.34
+        },
+        "zero": {
+          "f1": 15.2,
+          "precision": 18.41,
+          "recall": 12.95
+        }
+      },
+      "path": "cu_proiel-scores.txt"
+    },
+    "de_potsdamcc": {
+      "conll_score": 50.48,
+      "metric_names": [
+        "muc",
+        "bcub",
+        "ceafe",
+        "ceafm",
+        "blanc",
+        "lea",
+        "mor",
+        "zero"
+      ],
+      "metrics": {
+        "bcub": {
+          "f1": 48.24,
+          "precision": 53.64,
+          "recall": 43.83
+        },
+        "blanc": {
+          "f1": 40.84,
+          "precision": 46.22,
+          "recall": 36.8
+        },
+        "ceafe": {
+          "f1": 49.41,
+          "precision": 47.78,
+          "recall": 51.16
+        },
+        "ceafm": {
+          "f1": 55.91,
+          "precision": 57.75,
+          "recall": 54.18
+        },
+        "lea": {
+          "f1": 42.43,
+          "precision": 48.31,
+          "recall": 37.82
+        },
+        "mor": {
+          "f1": 58.09,
+          "precision": 62.13,
+          "recall": 54.53
+        },
+        "muc": {
+          "f1": 53.78,
+          "precision": 57.49,
+          "recall": 50.53
+        },
+        "zero": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0
+        }
+      },
+      "path": "de_potsdamcc-scores.txt"
+    },
+    "en_fantasycoref": {
+      "conll_score": 62.87,
+      "metric_names": [
+        "muc",
+        "bcub",
+        "ceafe",
+        "ceafm",
+        "blanc",
+        "lea",
+        "mor",
+        "zero"
+      ],
+      "metrics": {
+        "bcub": {
+          "f1": 60.19,
+          "precision": 67.37,
+          "recall": 54.39
+        },
+        "blanc": {
+          "f1": 65.15,
+          "precision": 73.74,
+          "recall": 58.43
+        },
+        "ceafe": {
+          "f1": 48.1,
+          "precision": 62.21,
+          "recall": 39.21
+        },
+        "ceafm": {
+          "f1": 66.3,
+          "precision": 71.3,
+          "recall": 61.96
+        },
+        "lea": {
+          "f1": 58.62,
+          "precision": 65.86,
+          "recall": 52.82
+        },
+        "mor": {
+          "f1": 77.5,
+          "precision": 88.29,
+          "recall": 69.05
+        },
+        "muc": {
+          "f1": 80.31,
+          "precision": 85.09,
+          "recall": 76.04
+        },
+        "zero": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0
+        }
+      },
+      "path": "en_fantasycoref-scores.txt"
+    },
+    "en_gum": {
+      "conll_score": 55.41,
+      "metric_names": [
+        "muc",
+        "bcub",
+        "ceafe",
+        "ceafm",
+        "blanc",
+        "lea",
+        "mor",
+        "zero"
+      ],
+      "metrics": {
+        "bcub": {
+          "f1": 52.49,
+          "precision": 62.07,
+          "recall": 45.47
+        },
+        "blanc": {
+          "f1": 54.7,
+          "precision": 64.71,
+          "recall": 47.53
+        },
+        "ceafe": {
+          "f1": 46.9,
+          "precision": 52.44,
+          "recall": 42.42
+        },
+        "ceafm": {
+          "f1": 56.15,
+          "precision": 62.52,
+          "recall": 50.96
+        },
+        "lea": {
+          "f1": 47.96,
+          "precision": 57.66,
+          "recall": 41.05
+        },
+        "mor": {
+          "f1": 61.56,
+          "precision": 76.56,
+          "recall": 51.47
+        },
+        "muc": {
+          "f1": 66.85,
+          "precision": 74.35,
+          "recall": 60.73
+        },
+        "zero": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0
+        }
+      },
+      "path": "en_gum-scores.txt"
+    },
+    "en_litbank": {
+      "conll_score": 53.12,
+      "metric_names": [
+        "muc",
+        "bcub",
+        "ceafe",
+        "ceafm",
+        "blanc",
+        "lea",
+        "mor",
+        "zero"
+      ],
+      "metrics": {
+        "bcub": {
+          "f1": 48.95,
+          "precision": 64.65,
+          "recall": 39.39
+        },
+        "blanc": {
+          "f1": 50.26,
+          "precision": 65.31,
+          "recall": 41.32
+        },
+        "ceafe": {
+          "f1": 39.85,
+          "precision": 36.04,
+          "recall": 44.56
+        },
+        "ceafm": {
+          "f1": 57.49,
+          "precision": 63.19,
+          "recall": 52.74
+        },
+        "lea": {
+          "f1": 47.0,
+          "precision": 62.64,
+          "recall": 37.61
+        },
+        "mor": {
+          "f1": 65.28,
+          "precision": 67.5,
+          "recall": 63.19
+        },
+        "muc": {
+          "f1": 70.56,
+          "precision": 79.51,
+          "recall": 63.42
+        },
+        "zero": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0
+        }
+      },
+      "path": "en_litbank-scores.txt"
+    },
+    "es_ancora": {
+      "conll_score": 47.45,
+      "metric_names": [
+        "muc",
+        "bcub",
+        "ceafe",
+        "ceafm",
+        "blanc",
+        "lea",
+        "mor",
+        "zero"
+      ],
+      "metrics": {
+        "bcub": {
+          "f1": 43.33,
+          "precision": 73.23,
+          "recall": 30.77
+        },
+        "blanc": {
+          "f1": 30.07,
+          "precision": 73.4,
+          "recall": 18.94
+        },
+        "ceafe": {
+          "f1": 47.72,
+          "precision": 65.43,
+          "recall": 37.56
+        },
+        "ceafm": {
+          "f1": 52.82,
+          "precision": 76.41,
+          "recall": 40.36
+        },
+        "lea": {
+          "f1": 38.63,
+          "precision": 67.85,
+          "recall": 27.01
+        },
+        "mor": {
+          "f1": 51.05,
+          "precision": 87.58,
+          "recall": 36.02
+        },
+        "muc": {
+          "f1": 51.31,
+          "precision": 75.92,
+          "recall": 38.75
+        },
+        "zero": {
+          "f1": 5.37,
+          "precision": 47.83,
+          "recall": 2.84
+        }
+      },
+      "path": "es_ancora-scores.txt"
+    },
+    "fr_ancor": {
+      "conll_score": 46.67,
+      "metric_names": [
+        "muc",
+        "bcub",
+        "ceafe",
+        "ceafm",
+        "blanc",
+        "lea",
+        "mor",
+        "zero"
+      ],
+      "metrics": {
+        "bcub": {
+          "f1": 42.81,
+          "precision": 42.38,
+          "recall": 43.24
+        },
+        "blanc": {
+          "f1": 24.2,
+          "precision": 18.31,
+          "recall": 38.71
+        },
+        "ceafe": {
+          "f1": 50.48,
+          "precision": 46.95,
+          "recall": 54.59
+        },
+        "ceafm": {
+          "f1": 45.49,
+          "precision": 40.41,
+          "recall": 52.03
+        },
+        "lea": {
+          "f1": 39.22,
+          "precision": 39.78,
+          "recall": 38.68
+        },
+        "mor": {
+          "f1": 63.38,
+          "precision": 60.91,
+          "recall": 66.06
+        },
+        "muc": {
+          "f1": 46.73,
+          "precision": 40.96,
+          "recall": 54.39
+        },
+        "zero": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0
+        }
+      },
+      "path": "fr_ancor-scores.txt"
+    },
+    "fr_democrat": {
+      "conll_score": 44.71,
+      "metric_names": [
+        "muc",
+        "bcub",
+        "ceafe",
+        "ceafm",
+        "blanc",
+        "lea",
+        "mor",
+        "zero"
+      ],
+      "metrics": {
+        "bcub": {
+          "f1": 39.14,
+          "precision": 62.92,
+          "recall": 28.41
+        },
+        "blanc": {
+          "f1": 34.31,
+          "precision": 72.85,
+          "recall": 22.44
+        },
+        "ceafe": {
+          "f1": 41.32,
+          "precision": 45.11,
+          "recall": 38.12
+        },
+        "ceafm": {
+          "f1": 49.81,
+          "precision": 62.92,
+          "recall": 41.22
+        },
+        "lea": {
+          "f1": 35.38,
+          "precision": 58.51,
+          "recall": 25.36
+        },
+        "mor": {
+          "f1": 58.88,
+          "precision": 65.71,
+          "recall": 53.34
+        },
+        "muc": {
+          "f1": 53.66,
+          "precision": 70.9,
+          "recall": 43.16
+        },
+        "zero": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0
+        }
+      },
+      "path": "fr_democrat-scores.txt"
+    },
+    "fr_litbankfr": {
+      "conll_score": 46.32,
+      "metric_names": [
+        "muc",
+        "bcub",
+        "ceafe",
+        "ceafm",
+        "blanc",
+        "lea",
+        "mor",
+        "zero"
+      ],
+      "metrics": {
+        "bcub": {
+          "f1": 43.59,
+          "precision": 63.87,
+          "recall": 33.08
+        },
+        "blanc": {
+          "f1": 44.81,
+          "precision": 65.26,
+          "recall": 34.27
+        },
+        "ceafe": {
+          "f1": 29.05,
+          "precision": 26.11,
+          "recall": 32.72
+        },
+        "ceafm": {
+          "f1": 56.68,
+          "precision": 66.16,
+          "recall": 49.58
+        },
+        "lea": {
+          "f1": 42.43,
+          "precision": 62.43,
+          "recall": 32.13
+        },
+        "mor": {
+          "f1": 64.74,
+          "precision": 72.46,
+          "recall": 58.5
+        },
+        "muc": {
+          "f1": 66.34,
+          "precision": 79.43,
+          "recall": 56.95
+        },
+        "zero": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0
+        }
+      },
+      "path": "fr_litbankfr-scores.txt"
+    },
+    "grc_proiel": {
+      "conll_score": 35.31,
+      "metric_names": [
+        "muc",
+        "bcub",
+        "ceafe",
+        "ceafm",
+        "blanc",
+        "lea",
+        "mor",
+        "zero"
+      ],
+      "metrics": {
+        "bcub": {
+          "f1": 27.65,
+          "precision": 63.62,
+          "recall": 17.66
+        },
+        "blanc": {
+          "f1": 24.32,
+          "precision": 66.45,
+          "recall": 15.08
+        },
+        "ceafe": {
+          "f1": 29.61,
+          "precision": 52.21,
+          "recall": 20.67
+        },
+        "ceafm": {
+          "f1": 42.34,
+          "precision": 70.54,
+          "recall": 30.25
+        },
+        "lea": {
+          "f1": 24.84,
+          "precision": 59.93,
+          "recall": 15.67
+        },
+        "mor": {
+          "f1": 45.7,
+          "precision": 87.09,
+          "recall": 30.98
+        },
+        "muc": {
+          "f1": 48.67,
+          "precision": 80.31,
+          "recall": 34.92
+        },
+        "zero": {
+          "f1": 23.58,
+          "precision": 64.94,
+          "recall": 14.41
+        }
+      },
+      "path": "grc_proiel-scores.txt"
+    },
+    "hbo_ptnk": {
+      "conll_score": 65.34,
+      "metric_names": [
+        "muc",
+        "bcub",
+        "ceafe",
+        "ceafm",
+        "blanc",
+        "lea",
+        "mor",
+        "zero"
+      ],
+      "metrics": {
+        "bcub": {
+          "f1": 63.61,
+          "precision": 73.65,
+          "recall": 55.98
+        },
+        "blanc": {
+          "f1": 63.33,
+          "precision": 74.29,
+          "recall": 55.2
+        },
+        "ceafe": {
+          "f1": 58.67,
+          "precision": 60.36,
+          "recall": 57.08
+        },
+        "ceafm": {
+          "f1": 69.62,
+          "precision": 75.86,
+          "recall": 64.33
+        },
+        "lea": {
+          "f1": 61.12,
+          "precision": 71.22,
+          "recall": 53.53
+        },
+        "mor": {
+          "f1": 72.84,
+          "precision": 76.24,
+          "recall": 69.72
+        },
+        "muc": {
+          "f1": 73.73,
+          "precision": 81.38,
+          "recall": 67.4
+        },
+        "zero": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0
+        }
+      },
+      "path": "hbo_ptnk-scores.txt"
+    },
+    "hi_hdtb": {
+      "conll_score": 64.06,
+      "metric_names": [
+        "muc",
+        "bcub",
+        "ceafe",
+        "ceafm",
+        "blanc",
+        "lea",
+        "mor",
+        "zero"
+      ],
+      "metrics": {
+        "bcub": {
+          "f1": 62.49,
+          "precision": 64.62,
+          "recall": 60.51
+        },
+        "blanc": {
+          "f1": 60.56,
+          "precision": 62.13,
+          "recall": 59.07
+        },
+        "ceafe": {
+          "f1": 58.95,
+          "precision": 59.32,
+          "recall": 58.59
+        },
+        "ceafm": {
+          "f1": 66.03,
+          "precision": 66.95,
+          "recall": 65.14
+        },
+        "lea": {
+          "f1": 58.24,
+          "precision": 60.67,
+          "recall": 55.99
+        },
+        "mor": {
+          "f1": 67.16,
+          "precision": 75.19,
+          "recall": 60.68
+        },
+        "muc": {
+          "f1": 70.74,
+          "precision": 71.91,
+          "recall": 69.61
+        },
+        "zero": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0
+        }
+      },
+      "path": "hi_hdtb-scores.txt"
+    },
+    "hu_korkor": {
+      "conll_score": 36.25,
+      "metric_names": [
+        "muc",
+        "bcub",
+        "ceafe",
+        "ceafm",
+        "blanc",
+        "lea",
+        "mor",
+        "zero"
+      ],
+      "metrics": {
+        "bcub": {
+          "f1": 31.57,
+          "precision": 50.35,
+          "recall": 23.0
+        },
+        "blanc": {
+          "f1": 21.73,
+          "precision": 45.08,
+          "recall": 14.77
+        },
+        "ceafe": {
+          "f1": 38.47,
+          "precision": 54.74,
+          "recall": 29.65
+        },
+        "ceafm": {
+          "f1": 41.12,
+          "precision": 59.57,
+          "recall": 31.39
+        },
+        "lea": {
+          "f1": 25.79,
+          "precision": 43.43,
+          "recall": 18.34
+        },
+        "mor": {
+          "f1": 47.07,
+          "precision": 83.43,
+          "recall": 32.78
+        },
+        "muc": {
+          "f1": 38.71,
+          "precision": 56.47,
+          "recall": 29.45
+        },
+        "zero": {
+          "f1": 16.22,
+          "precision": 40.0,
+          "recall": 10.17
+        }
+      },
+      "path": "hu_korkor-scores.txt"
+    },
+    "hu_szegedkoref": {
+      "conll_score": 39.2,
+      "metric_names": [
+        "muc",
+        "bcub",
+        "ceafe",
+        "ceafm",
+        "blanc",
+        "lea",
+        "mor",
+        "zero"
+      ],
+      "metrics": {
+        "bcub": {
+          "f1": 35.89,
+          "precision": 60.41,
+          "recall": 25.53
+        },
+        "blanc": {
+          "f1": 26.68,
+          "precision": 54.86,
+          "recall": 17.92
+        },
+        "ceafe": {
+          "f1": 40.63,
+          "precision": 59.61,
+          "recall": 30.82
+        },
+        "ceafm": {
+          "f1": 44.95,
+          "precision": 67.53,
+          "recall": 33.69
+        },
+        "lea": {
+          "f1": 31.78,
+          "precision": 55.25,
+          "recall": 22.31
+        },
+        "mor": {
+          "f1": 42.78,
+          "precision": 75.41,
+          "recall": 29.86
+        },
+        "muc": {
+          "f1": 41.09,
+          "precision": 62.42,
+          "recall": 30.63
+        },
+        "zero": {
+          "f1": 7.34,
+          "precision": 27.59,
+          "recall": 4.23
+        }
+      },
+      "path": "hu_szegedkoref-scores.txt"
+    },
+    "ko_ecmt": {
+      "conll_score": 59.04,
+      "metric_names": [
+        "muc",
+        "bcub",
+        "ceafe",
+        "ceafm",
+        "blanc",
+        "lea",
+        "mor",
+        "zero"
+      ],
+      "metrics": {
+        "bcub": {
+          "f1": 56.72,
+          "precision": 52.38,
+          "recall": 61.85
+        },
+        "blanc": {
+          "f1": 51.07,
+          "precision": 47.79,
+          "recall": 55.22
+        },
+        "ceafe": {
+          "f1": 56.19,
+          "precision": 56.08,
+          "recall": 56.29
+        },
+        "ceafm": {
+          "f1": 61.13,
+          "precision": 59.39,
+          "recall": 62.97
+        },
+        "lea": {
+          "f1": 53.36,
+          "precision": 48.91,
+          "recall": 58.7
+        },
+        "mor": {
+          "f1": 68.31,
+          "precision": 64.8,
+          "recall": 72.22
+        },
+        "muc": {
+          "f1": 64.21,
+          "precision": 61.69,
+          "recall": 66.96
+        },
+        "zero": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0
+        }
+      },
+      "path": "ko_ecmt-scores.txt"
+    },
+    "la_coreflat": {
+      "conll_score": 20.56,
+      "metric_names": [
+        "muc",
+        "bcub",
+        "ceafe",
+        "ceafm",
+        "blanc",
+        "lea",
+        "mor",
+        "zero"
+      ],
+      "metrics": {
+        "bcub": {
+          "f1": 19.25,
+          "precision": 18.9,
+          "recall": 19.61
+        },
+        "blanc": {
+          "f1": 11.84,
+          "precision": 20.99,
+          "recall": 15.19
+        },
+        "ceafe": {
+          "f1": 12.28,
+          "precision": 29.89,
+          "recall": 7.73
+        },
+        "ceafm": {
+          "f1": 19.27,
+          "precision": 28.91,
+          "recall": 14.45
+        },
+        "lea": {
+          "f1": 14.6,
+          "precision": 13.63,
+          "recall": 15.71
+        },
+        "mor": {
+          "f1": 23.48,
+          "precision": 58.78,
+          "recall": 14.67
+        },
+        "muc": {
+          "f1": 30.15,
+          "precision": 39.05,
+          "recall": 24.55
+        },
+        "zero": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0
+        }
+      },
+      "path": "la_coreflat-scores.txt"
+    },
+    "lt_lcc": {
+      "conll_score": 67.87,
+      "metric_names": [
+        "muc",
+        "bcub",
+        "ceafe",
+        "ceafm",
+        "blanc",
+        "lea",
+        "mor",
+        "zero"
+      ],
+      "metrics": {
+        "bcub": {
+          "f1": 65.8,
+          "precision": 69.66,
+          "recall": 62.34
+        },
+        "blanc": {
+          "f1": 57.01,
+          "precision": 59.88,
+          "recall": 54.93
+        },
+        "ceafe": {
+          "f1": 67.04,
+          "precision": 74.68,
+          "recall": 60.82
+        },
+        "ceafm": {
+          "f1": 72.46,
+          "precision": 76.64,
+          "recall": 68.72
+        },
+        "lea": {
+          "f1": 62.98,
+          "precision": 66.8,
+          "recall": 59.58
+        },
+        "mor": {
+          "f1": 74.65,
+          "precision": 75.14,
+          "recall": 74.18
+        },
+        "muc": {
+          "f1": 70.78,
+          "precision": 73.55,
+          "recall": 68.2
+        },
+        "zero": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0
+        }
+      },
+      "path": "lt_lcc-scores.txt"
+    },
+    "nl_openboek": {
+      "conll_score": 47.08,
+      "metric_names": [
+        "muc",
+        "bcub",
+        "ceafe",
+        "ceafm",
+        "blanc",
+        "lea",
+        "mor",
+        "zero"
+      ],
+      "metrics": {
+        "bcub": {
+          "f1": 40.13,
+          "precision": 70.39,
+          "recall": 28.06
+        },
+        "blanc": {
+          "f1": 35.53,
+          "precision": 71.17,
+          "recall": 23.81
+        },
+        "ceafe": {
+          "f1": 39.76,
+          "precision": 50.64,
+          "recall": 32.72
+        },
+        "ceafm": {
+          "f1": 48.68,
+          "precision": 64.31,
+          "recall": 39.17
+        },
+        "lea": {
+          "f1": 38.25,
+          "precision": 68.53,
+          "recall": 26.53
+        },
+        "mor": {
+          "f1": 63.99,
+          "precision": 75.87,
+          "recall": 55.32
+        },
+        "muc": {
+          "f1": 61.36,
+          "precision": 81.44,
+          "recall": 49.22
+        },
+        "zero": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0
+        }
+      },
+      "path": "nl_openboek-scores.txt"
+    },
+    "no_bokmaalnarc": {
+      "conll_score": 50.32,
+      "metric_names": [
+        "muc",
+        "bcub",
+        "ceafe",
+        "ceafm",
+        "blanc",
+        "lea",
+        "mor",
+        "zero"
+      ],
+      "metrics": {
+        "bcub": {
+          "f1": 47.65,
+          "precision": 58.55,
+          "recall": 40.17
+        },
+        "blanc": {
+          "f1": 39.38,
+          "precision": 59.25,
+          "recall": 31.19
+        },
+        "ceafe": {
+          "f1": 46.08,
+          "precision": 41.76,
+          "recall": 51.4
+        },
+        "ceafm": {
+          "f1": 54.01,
+          "precision": 57.44,
+          "recall": 50.97
+        },
+        "lea": {
+          "f1": 43.76,
+          "precision": 54.7,
+          "recall": 36.47
+        },
+        "mor": {
+          "f1": 58.96,
+          "precision": 61.57,
+          "recall": 56.56
+        },
+        "muc": {
+          "f1": 57.24,
+          "precision": 64.6,
+          "recall": 51.39
+        },
+        "zero": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0
+        }
+      },
+      "path": "no_bokmaalnarc-scores.txt"
+    },
+    "no_nynorsknarc": {
+      "conll_score": 52.18,
+      "metric_names": [
+        "muc",
+        "bcub",
+        "ceafe",
+        "ceafm",
+        "blanc",
+        "lea",
+        "mor",
+        "zero"
+      ],
+      "metrics": {
+        "bcub": {
+          "f1": 49.91,
+          "precision": 52.72,
+          "recall": 47.37
+        },
+        "blanc": {
+          "f1": 48.24,
+          "precision": 52.81,
+          "recall": 46.08
+        },
+        "ceafe": {
+          "f1": 45.94,
+          "precision": 38.35,
+          "recall": 57.29
+        },
+        "ceafm": {
+          "f1": 54.6,
+          "precision": 51.94,
+          "recall": 57.54
+        },
+        "lea": {
+          "f1": 45.79,
+          "precision": 49.14,
+          "recall": 42.87
+        },
+        "mor": {
+          "f1": 60.88,
+          "precision": 58.6,
+          "recall": 63.34
+        },
+        "muc": {
+          "f1": 60.7,
+          "precision": 60.38,
+          "recall": 61.01
+        },
+        "zero": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0
+        }
+      },
+      "path": "no_nynorsknarc-scores.txt"
+    },
+    "pl_pcc": {
+      "conll_score": 47.64,
+      "metric_names": [
+        "muc",
+        "bcub",
+        "ceafe",
+        "ceafm",
+        "blanc",
+        "lea",
+        "mor",
+        "zero"
+      ],
+      "metrics": {
+        "bcub": {
+          "f1": 43.97,
+          "precision": 53.09,
+          "recall": 37.52
+        },
+        "blanc": {
+          "f1": 39.87,
+          "precision": 52.84,
+          "recall": 32.54
+        },
+        "ceafe": {
+          "f1": 48.47,
+          "precision": 48.1,
+          "recall": 48.84
+        },
+        "ceafm": {
+          "f1": 51.64,
+          "precision": 56.77,
+          "recall": 47.37
+        },
+        "lea": {
+          "f1": 38.85,
+          "precision": 47.62,
+          "recall": 32.81
+        },
+        "mor": {
+          "f1": 58.1,
+          "precision": 61.88,
+          "recall": 54.75
+        },
+        "muc": {
+          "f1": 50.5,
+          "precision": 57.85,
+          "recall": 44.8
+        },
+        "zero": {
+          "f1": 6.01,
+          "precision": 26.37,
+          "recall": 3.39
+        }
+      },
+      "path": "pl_pcc-scores.txt"
+    },
+    "ru_rucor": {
+      "conll_score": 51.12,
+      "metric_names": [
+        "muc",
+        "bcub",
+        "ceafe",
+        "ceafm",
+        "blanc",
+        "lea",
+        "mor",
+        "zero"
+      ],
+      "metrics": {
+        "bcub": {
+          "f1": 50.6,
+          "precision": 67.66,
+          "recall": 40.42
+        },
+        "blanc": {
+          "f1": 51.99,
+          "precision": 69.54,
+          "recall": 41.83
+        },
+        "ceafe": {
+          "f1": 38.4,
+          "precision": 52.45,
+          "recall": 30.28
+        },
+        "ceafm": {
+          "f1": 58.91,
+          "precision": 72.99,
+          "recall": 49.39
+        },
+        "lea": {
+          "f1": 48.06,
+          "precision": 65.33,
+          "recall": 38.01
+        },
+        "mor": {
+          "f1": 63.19,
+          "precision": 85.51,
+          "recall": 50.1
+        },
+        "muc": {
+          "f1": 64.37,
+          "precision": 78.17,
+          "recall": 54.71
+        },
+        "zero": {
+          "f1": 0.0,
+          "precision": 0.0,
+          "recall": 0.0
+        }
+      },
+      "path": "ru_rucor-scores.txt"
+    },
+    "tr_itcc": {
+      "conll_score": 37.34,
+      "metric_names": [
+        "muc",
+        "bcub",
+        "ceafe",
+        "ceafm",
+        "blanc",
+        "lea",
+        "mor",
+        "zero"
+      ],
+      "metrics": {
+        "bcub": {
+          "f1": 28.53,
+          "precision": 53.76,
+          "recall": 19.41
+        },
+        "blanc": {
+          "f1": 23.37,
+          "precision": 53.77,
+          "recall": 15.02
+        },
+        "ceafe": {
+          "f1": 37.98,
+          "precision": 40.82,
+          "recall": 35.5
+        },
+        "ceafm": {
+          "f1": 42.77,
+          "precision": 58.98,
+          "recall": 33.55
+        },
+        "lea": {
+          "f1": 24.41,
+          "precision": 49.03,
+          "recall": 16.25
+        },
+        "mor": {
+          "f1": 54.03,
+          "precision": 81.92,
+          "recall": 40.31
+        },
+        "muc": {
+          "f1": 45.52,
+          "precision": 66.12,
+          "recall": 34.7
+        },
+        "zero": {
+          "f1": 36.31,
+          "precision": 58.22,
+          "recall": 26.38
+        }
+      },
+      "path": "tr_itcc-scores.txt"
+    }
+  },
+  "root": "results"
+}
