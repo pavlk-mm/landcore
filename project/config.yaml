@@ -1,0 +1,50 @@
+experiment:
+  name: Test new script
+  description: ...
+  annotation_format: plaintext
+  directory: outputs/debug_small_8
+
+data:
+  language: auto
+  input_format: plaintext
+  chunk_size:
+    size: 500
+    unit: words
+  directory: project/experiments/new_script_testing
+  #directory: new_script_testing
+  only_indices_file: null #outputs/debug_small/failed_chunks.yaml
+
+examples:
+  choose_strategy: longest
+  number: 1
+  chunk_size:
+    size: 500
+    unit: words
+  directory_gold: data/annotated/train #chunked
+  directory_blind: data/blind/train #chunked
+  suffix_gold: .txt
+  suffix_blind: .txt
+
+prompt:
+  template: project/prompt_templates/improved_high_recall_empty_tokens_by_corpus.txt
+  instructions_directory: project/prompt_templates/instructions
+  construction_strategy: simple
+
+run:
+  attempts: 3
+  save_intermediate: true
+  concurrency: 100
+  retries: 3
+  skip_existing: true
+  show_progress: true
+  show_separate_progress_bars: false
+
+llm:
+  model: openrouter/hunter-alpha
+  parameters:
+    temperature: null
+
+api:
+  provider: OpenRouter
+  key: $OPENROUTER_API_KEY
+  base_url: https://openrouter.ai/api/v1

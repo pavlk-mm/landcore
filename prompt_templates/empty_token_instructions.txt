@@ -1,0 +1,7 @@
+
+## Empty Tokens
+Some entities are implicit (for example, dropped subjects in pro-drop languages). In such cases, insert an empty token ## and annotate it.
+- Place ## immediately after the syntactic head (usually the verb).
+- Optionally include the omitted form if needed.
+- Add empty tokens only when strongly supported by context and morphology.
+
