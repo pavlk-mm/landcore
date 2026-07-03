@@ -1,0 +1,47 @@
+api:
+  base_url: https://openrouter.ai/api/v1
+  key: $OPENROUTER_API_KEY
+  provider: OpenRouter
+  requests_per_minute: 20
+  requests_per_minute_by_model:
+    deepseek/deepseek-v3.2: 150
+    openrouter/hunter-alpha: 150
+data:
+  chunk_size:
+    size: 1 # if unchunked, this does not matter
+    unit: words
+  directory: $PATH_TO_DATA_TO_ANNOTATE
+  input_format: plaintext
+  language: auto
+  only_indices_file: null
+examples:
+  choose_strategy: longest
+  chunk_size:
+    size: 500
+    unit: words
+  directory_blind: $PATH_TO_BLIND_EXAMPLE_DATA
+  directory_gold: $PATH_TO_GOLD_EXAMPLE_DATA
+  number: 3
+experiment:
+  annotation_format: eml
+  description: Annotation of the test set using DeepSeek 3.2 with an improved prompt
+    template.
+  directory:  $PATH_TO_OUTPUT_DIRECTORY #final_outputs_deepseek
+  name: Annotation of dev using DeepSeek 3.2 with improved recall prompt using reindexed
+    examples
+llm:
+  model: deepseek/deepseek-v3.2
+  parameters:
+    temperature: 0.0
+prompt:
+  construction_strategy: simple
+  instructions_directory: prompt_templates
+  template: prompt_templates/language_specific_prompts/$LANGUAGE.txt
+run:
+  attempts: 5
+  concurrency: 1000
+  retries: 3
+  save_intermediate: true
+  show_progress: true
+  show_separate_progress_bars: false
+  skip_existing: true
