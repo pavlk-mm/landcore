@@ -1,0 +1,10 @@
+# Core runtime dependencies for the LANDCORE pipeline
+# Includes main pipeline, preprocessing, and postprocessing scripts
+
+udapi
+git+https://github.com/pavlk-mm/text2text-coref.git
+requests
+openai
+tqdm
+PyYAML
+json_repair
