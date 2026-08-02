@@ -5,15 +5,19 @@ set -euo pipefail
 output_dir=""
 parallel=1
 human_readable_json=false
+mention_prefix="m"
+store_mentions=false
 input_files=()
 
 usage() {
-	echo "Usage: $0 [--output-dir <dir>] [--parallel <num>] [--human_readable_json] <input_eml> [input_eml ...]"
+	echo "Usage: $0 [--output-dir <dir>] [--parallel <num>] [--human_readable_json] [--mention_prefix <prefix>] [--store_mentions] <input_eml> [input_eml ...]"
 	echo ""
 	echo "Options:"
 	echo "  --output-dir <dir>         Output directory for generated .mml/.json files (default: same dir as input file)"
 	echo "  --parallel <num>           Number of parallel conversions to run (default: 1)"
 	echo "  --human_readable_json      Forward this flag to eml2mml.py"
+	echo "  --mention_prefix <prefix>  Forward this flag to eml2mml.py (default: 'm')"
+	echo "  --store_mentions		   Forward this flag to eml2mml.py (store mention text in JSON output)"
 	echo "  -h, --help                 Show this help message"
 }
 
@@ -45,9 +49,22 @@ while [[ $# -gt 0 ]]; do
 			human_readable_json=true
 			shift
 			;;
+		--store_mentions)
+			store_mentions=true
+			shift
+			;;
 		-h|--help)
 			usage
 			exit 0
+			;;
+		--mention_prefix)
+			if [[ $# -lt 2 ]]; then
+				echo "Missing value for --mention_prefix" >&2
+				usage
+				exit 1
+			fi
+			mention_prefix="$2"
+			shift 2
 			;;
 		--*)
 			echo "Unknown option: $1" >&2
@@ -122,6 +139,12 @@ run_conversion() {
 	local cmd=("$python_cmd" "$eml2mml_script" "$input_file" "$output_mml" "$output_json")
 	if [[ "$human_readable_json" == true ]]; then
 		cmd+=("--human_readable_json")
+	fi
+	if [[ -n "$mention_prefix" ]]; then
+		cmd+=("--mention_prefix" "$mention_prefix")
+	fi
+	if [[ "$store_mentions" == true ]]; then
+		cmd+=("--store_mentions")
 	fi
 
 	echo "Converting: $input_file"

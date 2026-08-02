@@ -18,7 +18,7 @@ if [ $# -eq 0 ]; then
 fi
 
 INPUT_DIR="$1"
-OUTPUT_DIRS_CSV="tuning,small,train"
+OUTPUT_DIRS_CSV="tuning,small,example"
 
 # Parse additional arguments
 SHUFFLE_FLAG=""

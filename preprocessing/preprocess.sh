@@ -99,7 +99,7 @@ if "$skipChunk"; then
 	chunked="$input_file"
 else
 	echo "Chunking documents in $input_file to $chunked"
-	udapy -s .project.preprocessing.DeleteBridgingAndSplitAntes .project.preprocessing.Chunker words="$words" <"$input_file" >"$chunked"
+	udapy -s .preprocessing.DeleteBridgingAndSplitAntes .preprocessing.Chunker words="$words" <"$input_file" >"$chunked"
 fi
 
 
