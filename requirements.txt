@@ -3,6 +3,7 @@
 
 udapi
 git+https://github.com/pavlk-mm/text2text-coref.git
+-r corefud-scorer/requirements.txt
 requests
 openai
 tqdm
