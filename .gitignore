@@ -1,3 +1,6 @@
+outputs/
+data/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
@@ -151,6 +154,7 @@ activemq-data/
 .env
 .envrc
 .venv
+.venvLinux/
 env/
 venv/
 ENV/
