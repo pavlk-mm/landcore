@@ -1,7 +1,0 @@
-udapi
-text2text-coref
-requests
-openai
-tqdm
-PyYAML
-json_repair

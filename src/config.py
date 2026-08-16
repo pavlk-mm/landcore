@@ -61,14 +61,14 @@ class DataObject:
 
 class Config(DataObject):
     REQUIRED_SECTIONS = ["experiment", "data", "examples", "prompt", "run", "llm", "api"]
-    ANNOTATION_FORMATS = ["plaintext", "json", "eml"]
+    ANNOTATION_FORMATS = ["plaintext", "json", "eml", "mmle", "mml"]
     LANGUAGES = ["auto"] + list(LANGUAGES.keys())
-    INPUT_FORMATS = ["plaintext", "json", "eml"]
+    INPUT_FORMATS = ["plaintext", "json", "mml"]
     CHUNK_UNITS = ["words", "sentences", "characters", "tokens"]
     CHOOSE_STRATEGIES = ["first", "random", "last", "longest"]
     CONSTRUCTION_STRATEGIES = ["few-shots", "zero-shot", "simple"]
     API_PROVIDERS = ["OpenRouter"]
-    DEFAULT_PROMPT_TEMPLATE = "project/prompt_templates/improved_high_recall_empty_tokens_by_corpus_eml_3examples.txt"
+    DEFAULT_PROMPT_TEMPLATE = "prompt_templates/universal_prompt.txt"
 
     def __init__(self, config_file):
         with open(config_file, 'r') as f:
@@ -86,30 +86,32 @@ class Config(DataObject):
             if not hasattr(self, section):
                 raise ValueError(f"{error_prefix} Missing required section: {section}")
 
-    def expand_macro_by_corpora(self, macro: str, values: list[str], default_text: str = "") -> dict[str, str]:
+    def expand_macro_by_corpora(self, macro: str, corpora: list[str], languages: list[str], default_text: str = "") -> dict[str, str]:
         expanded_values = {"default": default_text}
         if "$CORPUS" in macro:
-            for value in values:
+            for value in corpora:
                 expanded_values[value] = macro.replace("$CORPUS", value)
         elif "$LANGUAGE" in macro:
-            for value in values:
-                expanded_values[value] = macro.replace("$LANGUAGE", value.split("_")[0])
+            for corpus in corpora:
+                language = corpus.split("_")[0]
+                if language not in languages:
+                    continue
+                expanded_values[corpus] = macro.replace("$LANGUAGE", language)
         return expanded_values
     
     def expand_prompt_template_path(self, template_path: str) -> dict[str, str]:
         if "$CORPUS" not in template_path and "$LANGUAGE" not in template_path:
             return {"default": template_path}
-        values = set()
-        for dirpath, _, filenames in os.walk(self.data.directory):
-            for filename in filenames:
-                if filename.endswith(".conllu") or filename.endswith(".eml") or filename.endswith(".txt"):
-                    corpus = os.path.basename(dirpath).split("-")[0]
-                    if "$CORPUS" in template_path:
-                        values.add(corpus)
-                    elif "$LANGUAGE" in template_path:
-                        language = corpus.split("_")[0]
-                        values.add(language)
-        return self.expand_macro_by_corpora(template_path, sorted(values), default_text=self.DEFAULT_PROMPT_TEMPLATE)
+        corpora = set()
+        languages = set()
+        for filename in os.listdir(self.data.directory):
+            if filename.endswith(".conllu") or filename.endswith(".eml") or filename.endswith(".txt"):
+                corpus = filename.split("-")[0]
+                corpora.add(corpus)
+                language = corpus.split("_")[0]
+                languages.add(language)
+        print(f"Expanding prompt template for {len(corpora)} corpora and {len(languages)} languages found in data directory {self.data.directory}:\n{sorted(corpora)}\n{sorted(languages)}")
+        return self.expand_macro_by_corpora(template_path, sorted(corpora), sorted(languages), default_text=self.DEFAULT_PROMPT_TEMPLATE)
 
     def check_prompt_template_paths(self, error_prefix="INVALID CONFIG"):
         for corpus, path in self.prompt.template.items():
