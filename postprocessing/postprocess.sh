@@ -1,5 +1,8 @@
 #!/bin/bash
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+
 # - clean (skeleton needed)
 # - text2conllu (other formats, skeleton needed)
 # - fix conllu (Udapi blocks)
@@ -142,7 +145,7 @@ if "$skipUnchunk"; then
 	unchunked="$collu"
 else
 	echo "Unchunking CoNLL-U file: $collu"
-	udapy -s .project.postprocessing.Unchunk < "$collu" > "$unchunked"
+	udapy -s .postprocessing.Unchunk < "$collu" > "$unchunked"
 	generatedUnchunked=true
 fi
 
@@ -151,7 +154,7 @@ if "$skipFix"; then
 	finalConllu="$unchunked"
 else
 	echo "Fixing CoNLL-U file with Udapi: $unchunked"
-	udapy -s corefud.MergeSameSpan corefud.FixInterleavedMy corefud.FixEntityAcrossNewdoc < "$unchunked" > "$finalConllu"
+	udapy -s corefud.MergeSameSpan corefud.FixInterleaved same_entity_only=0 corefud.FixEntityAcrossNewdoc < "$unchunked" > "$finalConllu"
 	generatedFinal=true
 fi
 
@@ -159,7 +162,7 @@ if "$skipScore"; then
 	echo "Skipping scoring step"
 else
 	echo "Scoring final CoNLL-U file against reference: $finalConllu vs $referenceConllu"
-	python project/corefud-scorer/corefud-scorer.py "$referenceConllu" "$finalConllu" > "$scores"
+	python "$REPO_ROOT/corefud-scorer/corefud-scorer.py" "$referenceConllu" "$finalConllu" > "$scores"
 fi
 
 if "$rmCleaned" && "$generatedCleaned"; then

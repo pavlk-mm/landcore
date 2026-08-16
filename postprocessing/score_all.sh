@@ -1,6 +1,9 @@
 #!/bin/bash
 # Run corefud-scorer on all .conllu files in key and system directories
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+
 if [ $# -ne 2 ]; then
     echo "Usage: $0 <key_dir> <system_dir>"
     exit 1
@@ -55,7 +58,7 @@ for key_file in "${key_files[@]}"; do
         echo "Scoring: $corpus"
         echo "  Key: $key_base"
         echo "  System: $(basename "$system_file")"
-        python project/corefud-scorer/corefud-scorer.py "$key_file" "$system_file" > "${system_file%-fixed_output.conllu}-fixed_output_scores.txt"
+        python "$REPO_ROOT/corefud-scorer/corefud-scorer.py" "$key_file" "$system_file" > "${system_file%-fixed_output.conllu}-fixed_output_scores.txt"
         echo ""
         ((count++))
     else

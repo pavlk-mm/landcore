@@ -3,9 +3,9 @@
 
 export PYTHONPATH="."
 
-suffix="-annotated.txt"
-skeletonDir="."
-referenceDir="."
+suffix="-annotated.eml"
+skeletonDir="data/crac_data_original/llm-gold-minidev"
+referenceDir="data/crac_data_original/llm-gold-minidev"
 skeletonSuffix="-corefud.conllu"
 referenceSuffix="-corefud.conllu"
 parallel=4
@@ -15,9 +15,9 @@ usage() {
     echo "Usage: $0 [--suffix <suffix>] [--skeleton-dir <dir>] [--reference-dir <dir>] [--skeleton-suffix <suffix>] [--reference-suffix <suffix>] [--parallel <num>] [--skipscore] [postprocess options] <annotated_file> [annotated_file ...]"
     echo ""
     echo "Wrapper options:"
-    echo "  --suffix <suffix>          Suffix removed from each input filename (default: -annotated.txt)"
-    echo "  --skeleton-dir <dir>       Directory for auto-constructed skeleton files (default: .)"
-    echo "  --reference-dir <dir>      Directory for auto-constructed reference files (default: .)"
+    echo "  --suffix <suffix>          Suffix removed from each input filename (default: -annotated.eml)"
+    echo "  --skeleton-dir <dir>       Directory for auto-constructed skeleton files (default: data/crac_data_original/llm-gold-minidev)"
+    echo "  --reference-dir <dir>      Directory for auto-constructed reference files (default: data/crac_data_original/llm-gold-minidev)"
     echo "  --skeleton-suffix <suffix> Suffix appended to base for skeleton files (default: -corefud.conllu)"
     echo "  --reference-suffix <suffix> Suffix appended to base for reference files (default: -corefud.conllu)"
     echo "  --parallel <num>           Number of parallel processes (default: 4)"
@@ -105,8 +105,8 @@ while [[ $# -gt 0 ]]; do
 				usage
 				exit 1
 			fi
-			if [[ "$2" != "txt" && "$2" != "json" && "$2" != "eml" ]]; then
-				echo "Invalid value for --format: $2 (expected: txt, json, eml)" >&2
+			if [[ "$2" != "txt" && "$2" != "json" && "$2" != "eml" && "$2" != "conllu" ]]; then
+				echo "Invalid value for --format: $2 (expected: txt, json, eml, conllu)" >&2
 				usage
 				exit 1
 			fi
