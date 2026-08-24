@@ -1,6 +1,6 @@
 #!/bin/bash
 
-config="configs/final_deepseek.yaml"
+config="configs/final_2step.yaml"
 orApiKey=""
 orModel=""
 
@@ -8,7 +8,7 @@ usage() {
 	echo "Usage: $0 [--config <path>] [--or-api-key <key>] [--or-model <model>]"
 	echo ""
 	echo "Options:"
-	echo "  -c, --config <path>   Path to YAML config file (default: configs/final_deepseek.yaml)"
+	echo "  -c, --config <path>   Path to YAML config file (default: configs/final_2step.yaml)"
 	echo "      --or-api-key <key> OpenRouter API key forwarded to annotation as --api_key"
 	echo "      --or-model <model> Model override forwarded to annotation as --model"
 	echo "  -h, --help            Show this help message"
