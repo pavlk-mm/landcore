@@ -11,6 +11,9 @@ import llm_service
 import save
 import models
 
+DOC_WITH_MULTIPLE_ENTITIES_MINIMAL_LENGTH = 300
+EML_MML_LENGTH_RATIO_THRESHOLD = 0.7
+
 def get_language_code_from_corpus_name(corpus_name):
 	"""Extract language code from corpus name assuming format langcode-*.txt"""
 	match = re.match(r'([a-z]{2,4})\_.*', corpus_name)
@@ -24,6 +27,8 @@ def load_train_corpora(config: Config) -> dict[str, list[examples.Example]]:
 	gold_texts = load.load_corpora_from_directory(config.examples.directory_gold, suffix=suffix_gold)
 	suffix_blind = choose_extension(config.data.input_format)
 	blind_texts = load.load_corpora_from_directory(config.examples.directory_blind, suffix=suffix_blind)
+	logging.info(f"Loaded gold corpora: {list(gold_texts.keys())} from directory: {config.examples.directory_gold}")
+	logging.info(f"Loaded blind corpora: {list(blind_texts.keys())} from directory: {config.examples.directory_blind}")
 	examples_by_corpus = {}
 	for corpus_name in gold_texts:
 		if corpus_name not in blind_texts:
@@ -231,6 +236,10 @@ def choose_extension(annotation_format: str) -> str:
 		return ".txt"
 	elif annotation_format == "eml":
 		return ".eml"
+	elif annotation_format == "mml":
+		return ".mml"
+	elif annotation_format == "mmle":
+		return ".mmle"
 	else:
 		logging.warning(f"Unknown annotation format '{annotation_format}'. Defaulting to 'txt'.")
 		return ".txt"
@@ -268,6 +277,49 @@ def filter_chunks_by_indices(chunks_by_corpus: dict[str, list[chunks.Chunk]], in
 		# 	filtered_chunks_by_corpus[corpus_name] = []
 	return filtered_chunks_by_corpus
 
+def check_chunk(config: Config, output_chunk: chunks.Chunk, input_chunk: chunks.Chunk, chunk_index: int, corpus_name: str) -> bool:
+	if output_chunk.tokens is None:
+		logging.warning(f"Chunk {chunk_index} for corpus '{corpus_name}' has no text in the output. Marking as failed and keeping original text.")
+		return False
+
+	elif output_chunk.text.strip() == "":
+		logging.warning(f"Chunk {chunk_index} for corpus '{corpus_name}' has empty text in the output. Marking as failed and keeping original text.")
+		return False
+
+	elif config.experiment.annotation_format in {"plaintext", "eml", "mml"} \
+		and config.data.input_format != "mml" \
+		and len(output_chunk.text) < len(input_chunk.text):
+		logging.warning(f"Chunk {chunk_index} for corpus '{corpus_name}' has shorter text in the output than in the input. Marking as failed and keeping original text.")
+		return False
+	
+	elif config.experiment.annotation_format == "eml" \
+		and config.data.input_format == "mml" \
+		and (len(output_chunk.text) > len(input_chunk.text) \
+	    or len(output_chunk.text) < len(input_chunk.text) * EML_MML_LENGTH_RATIO_THRESHOLD \
+		or output_chunk.text[-1] != input_chunk.text[-1]
+		): # Allow some decrease in length due to tags, but not too much
+		logging.warning(f"Chunk {chunk_index} for corpus '{corpus_name}' has longer text in the output than in the input. Marking as failed and keeping original text.")
+		return False
+
+	elif config.experiment.annotation_format == "plaintext" \
+		and "|" not in output_chunk.text:
+		logging.warning(f"Chunk {chunk_index} for corpus '{corpus_name}' does not contain '|' in the output. Marking as failed and keeping original text.")
+		return False
+
+	elif config.experiment.annotation_format in {"plaintext", "eml", "mml"} \
+		and re.search(r"\< \# Example \d ", output_chunk.text):
+		logging.warning(f"Chunk {chunk_index} for corpus '{corpus_name}' contains an unprocessed example in the output. Marking as failed and keeping original text.")
+		return False
+
+	elif config.experiment.annotation_format == "mmle" \
+		and len(input_chunk.text) > DOC_WITH_MULTIPLE_ENTITIES_MINIMAL_LENGTH \
+		and not re.search(r"\n", output_chunk.text):
+		logging.warning(f"Chunk {chunk_index} for corpus '{corpus_name}' is long but the output contains only one cluster. Marking as failed and keeping original text.")
+		return False
+
+	else:
+		return True
+
 def check_all_chunks(config: Config, chunks_by_corpus: dict[str, list[chunks.Chunk]], input_chunks_by_corpus: dict[str, list[chunks.Chunk]]):
 	for corpus_name in chunks_by_corpus:
 		output_chunks = chunks_by_corpus[corpus_name]
@@ -275,28 +327,10 @@ def check_all_chunks(config: Config, chunks_by_corpus: dict[str, list[chunks.Chu
 		if len(output_chunks) != len(input_chunks):
 			raise ValueError(f"Number of output chunks for corpus '{corpus_name}' does not match number of input chunks. Output: {len(output_chunks)}, Input: {len(input_chunks)}")
 		for i, (output_chunk, input_chunk) in enumerate(zip(output_chunks, input_chunks)):
-			if output_chunk.tokens is None:
+			if not check_chunk(config, output_chunk, input_chunk, i, corpus_name):
 				if config.experiment.annotation_format != "json":
 					output_chunk.metadata["success"] = False
 				output_chunk.tokens = input_chunk.tokens
-				logging.warning(f"Chunk {i} for corpus '{corpus_name}' has no text in the output. Marking as failed and keeping original text.")
-			elif output_chunk.text.strip() == "":
-				if config.experiment.annotation_format != "json":
-					output_chunk.metadata["success"] = False
-				output_chunk.tokens = input_chunk.tokens
-				logging.warning(f"Chunk {i} for corpus '{corpus_name}' has empty text in the output. Marking as failed and keeping original text.")
-			elif config.experiment.annotation_format in {"plaintext", "eml"} and len(output_chunk.text) < len(input_chunk.text):
-				output_chunk.metadata["success"] = False
-				output_chunk.tokens = input_chunk.tokens
-				logging.warning(f"Chunk {i} for corpus '{corpus_name}' has shorter text in the output than in the input. Marking as failed and keeping original text.")
-			elif config.experiment.annotation_format == "plaintext" and "|" not in output_chunk.text:
-				output_chunk.metadata["success"] = False
-				output_chunk.tokens = input_chunk.tokens
-				logging.warning(f"Chunk {i} for corpus '{corpus_name}' does not contain '|' in the output. Marking as failed and keeping original text.")
-			elif config.experiment.annotation_format in {"eml", "plaintext"} and re.search(r"\< \# Example \d ", output_chunk.text):
-				output_chunk.metadata["success"] = False
-				output_chunk.tokens = input_chunk.tokens
-				logging.warning(f"Chunk {i} for corpus '{corpus_name}' contains an unprocessed example in the output. Marking as failed and keeping original text.")
 	return chunks_by_corpus
 
 def check_chunks_with_indices(config: Config, chunks_by_corpus: dict[str, list[chunks.Chunk]], input_chunks_by_corpus: dict[str, list[chunks.Chunk]], indices_by_corpus: dict[str, list[int]]):
@@ -313,24 +347,10 @@ def check_chunks_with_indices(config: Config, chunks_by_corpus: dict[str, list[c
 				logging.warning(f"Index {i} for corpus '{corpus_name}' is out of range for input chunks. Skipping.")
 				continue
 			input_chunk = input_chunks[i]
-			if output_chunk.tokens is None:
+			if not check_chunk(config, output_chunk, input_chunk, i, corpus_name):
 				if config.experiment.annotation_format != "json":
 					output_chunk.metadata["success"] = False
 				output_chunk.tokens = input_chunk.tokens
-				logging.warning(f"Chunk {i} for corpus '{corpus_name}' has no text in the output. Marking as failed and keeping original text.")
-			elif output_chunk.text.strip() == "":
-				if config.experiment.annotation_format != "json":	
-					output_chunk.metadata["success"] = False
-				output_chunk.tokens = input_chunk.tokens
-				logging.warning(f"Chunk {i} for corpus '{corpus_name}' has empty text in the output. Marking as failed and keeping original text.")
-			elif config.experiment.annotation_format in {"plaintext", "eml"} and len(output_chunk.text) < len(input_chunk.text):
-				output_chunk.metadata["success"] = False
-				output_chunk.tokens = input_chunk.tokens
-				logging.warning(f"Chunk {i} for corpus '{corpus_name}' has shorter text in the output than in the input. Marking as failed and keeping original text.")
-			elif config.experiment.annotation_format == "plaintext" and "|" not in output_chunk.text:
-				output_chunk.metadata["success"] = False
-				output_chunk.tokens = input_chunk.tokens
-				logging.warning(f"Chunk {i} for corpus '{corpus_name}' does not contain '|' in the output. Marking as failed and keeping original text.")
 	return chunks_by_corpus
 
 def check_chunks(config: Config, chunks_by_corpus: dict[str, list[chunks.Chunk]], input_chunks_by_corpus: dict[str, list[chunks.Chunk]], indices_by_corpus: dict[str, list[int]] = None):

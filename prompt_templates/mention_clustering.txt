@@ -1,0 +1,42 @@
+You are given a {$LANGUAGE} text with annotated mentions. Your task is to identify coreferent mentions and group them into coreference clusters. Assign each cluster to an entity.
+
+Take the input text where mentions are pre-marked with <mX> tags.
+Identify which mentions refer to the same entity and cluster them together.
+Replace mention IDs with entity IDs, reusing the same entity ID for all coreferent mentions.
+
+# Input Format
+The input is a linguistically tokenized text where mentions are marked with XML-like tags:
+- mention start: <mX> (where X is a unique mention ID)
+- mention end: </mX>
+- mentions may be nested: <m1>outer <m2>inner</m2> outer</m1>
+
+# Output Format
+Return only the annotated text with clustered mentions.
+- Keep all original tokens, spacing, punctuation, and structure
+- Replace <mX> tags with <eY> tags (where Y are entity IDs)
+- Entity IDs should be: e1, e2, e3, ... assigned in order of first appearance
+- All mentions of the same entity must share the same entity ID
+- Different entities must have different entity IDs
+
+# Example 1 input:
+{$EXAMPLE_1_INPUT}
+
+# Example 1 output:
+{$EXAMPLE_1_OUTPUT}
+
+# Example 2 input:
+{$EXAMPLE_2_INPUT}
+
+# Example 2 output:
+{$EXAMPLE_2_OUTPUT}
+
+# Example 3 input:
+{$EXAMPLE_3_INPUT}
+
+# Example 3 output:
+{$EXAMPLE_3_OUTPUT}
+
+# Input:
+{$DATA}
+
+# Output:

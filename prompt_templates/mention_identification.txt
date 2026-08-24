@@ -1,0 +1,41 @@
+You are given a {$LANGUAGE} text. Your task is to identify mentions of real-world entities and mark them using tags.
+
+You are part of a coreference resolution system. Your job is to identify coreferential mentions, but not to link them.
+Take the input text and identify as many real-world entities referred to in the text as you can, focusing on the ones that are repeated.
+Focus on anaphora and cataphora. If you find them, annotate both the referring mention and the referent.
+
+# Input Format
+The input is a linguistically tokenized text where multi-word tokens are split (UD style, e.g. don't -> do n't).
+
+# Output Format
+Return only the original text with annotated mentions.
+- Keep all original tokens, spacing, punctuation, and structure
+- Add tags marking mention span boundaries:
+	- mention start: <mX> (where X is a unique mention ID)
+	- mention end: </mX>
+	- mentions may be nested: <m1>outer <m2>inner</m2> outer</m1>
+- Each mention must have a unique ID. Its start tag and end tag must have the same ID.
+- Do not include any explanations.
+{$EMPTY_TOKENS_INSTRUCTIONS}
+# Example 1 input:
+{$EXAMPLE_1_INPUT}
+
+# Example 1 output:
+{$EXAMPLE_1_OUTPUT}
+
+# Example 2 input:
+{$EXAMPLE_2_INPUT}
+
+# Example 2 output:
+{$EXAMPLE_2_OUTPUT}
+
+# Example 3 input:
+{$EXAMPLE_3_INPUT}
+
+# Example 3 output:
+{$EXAMPLE_3_OUTPUT}
+
+# Input:
+{$DATA}
+
+# Output:

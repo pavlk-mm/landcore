@@ -1,6 +1,6 @@
 outputs/
 data/
-corefud-scorer/
+corefud-scorer/gti
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

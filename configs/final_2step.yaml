@@ -36,7 +36,7 @@ llm:
 prompt:
   construction_strategy: simple
   instructions_directory: prompt_templates
-  template: prompt_templates/language_specific_prompts/$LANGUAGE.txt
+  template: prompt_templates/mention_clustering.txt
 run:
   attempts: 5           # number of annotation attempts of all documents in the datasets.
   concurrency: 1000     # maximum number of concurrent requests to the LLM API (e.g., OpenRouter) during the annotation process.
