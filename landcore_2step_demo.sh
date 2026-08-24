@@ -74,6 +74,16 @@ echo "    skipScore: $skipScore"
 echo "    skipUnchunk: $skipUnchunk"
 echo "    outputDir: $outputDir"
 suffix="-annotated.$annotationFormat"
+intermediateFormat="mml"
+examplesIntermediate="${examplesGold%/}"
+if [[ "${examplesIntermediate##*/}" == "$annotationFormat" ]]; then
+	examplesIntermediate="${examplesIntermediate%/*}/$intermediateFormat"
+else
+	echo "Expected examplesGold to end with '$annotationFormat', got: $examplesGold" >&2
+	exit 1
+fi
+intermediateOutputDir="$outputDir/$intermediateFormat"
+dataIntermediate="$intermediateOutputDir/results"
 
 # Preprocessing with make
 echo "PREPROCESSING..."
@@ -84,6 +94,7 @@ done
 
 # Annotation
 echo "ANNOTATION..."
+echo "Mention identification..."
 annotationArgs=(--config "$config")
 if [[ -n "$orApiKey" ]]; then
 	annotationArgs+=(--api_key "$orApiKey")
@@ -91,7 +102,22 @@ fi
 if [[ -n "$orModel" ]]; then
 	annotationArgs+=(--model "$orModel")
 fi
-python src/landcore.py "${annotationArgs[@]}" ##--print_config
+annotationArgs+=(--output_dir "$intermediateOutputDir")
+annotationArgs+=(--annotation_format "$intermediateFormat")
+annotationArgs+=(--examples_directory_gold "$examplesIntermediate")
+python src/landcore.py "${annotationArgs[@]}" --print_config
+
+echo "Mention clustering..."
+annotationArgs=(--config "$config")
+if [[ -n "$orApiKey" ]]; then
+	annotationArgs+=(--api_key "$orApiKey")
+fi
+if [[ -n "$orModel" ]]; then
+	annotationArgs+=(--model "$orModel")
+fi
+annotationArgs+=(--examples_directory_blind "$examplesIntermediate")
+annotationArgs+=(--data_directory "$dataIntermediate")
+python src/landcore.py "${annotationArgs[@]}" --print_config
 
 # Postprocessing
 echo "POSTPROCESSING..."

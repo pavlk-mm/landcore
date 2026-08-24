@@ -33,7 +33,8 @@ parser.add_argument("--examples_choosing_strategy", help="Override config: examp
 parser.add_argument("--examples_number", help="Override config: examples.number", type=int)
 parser.add_argument("--examples_chunk_size", help="Override config: examples.chunk_size.size", type=int)
 parser.add_argument("--examples_chunk_size_unit", help="Override config: examples.chunk_size.unit")
-parser.add_argument("--examples_directory", help="Override config: examples.directory")
+parser.add_argument("--examples_directory_gold", help="Override config: examples.directory_gold")
+parser.add_argument("--examples_directory_blind", help="Override config: examples.directory_blind")
 parser.add_argument("--prompt_template", help="Override config: prompt.template")
 parser.add_argument("--prompt_construction_strategy", help="Override config: prompt.construction_strategy")
 parser.add_argument("--prompt_instructions", help="Override config: prompt.instructions_directory (expects directory path)")
@@ -74,8 +75,10 @@ def update_config_from_args(config: Config, args: argparse.Namespace):
 		config.examples.chunk_size.size = args.examples_chunk_size
 	if args.examples_chunk_size_unit is not None:
 		config.examples.chunk_size.unit = args.examples_chunk_size_unit
-	if args.examples_directory is not None:
-		config.examples.directory = args.examples_directory
+	if args.examples_directory_gold is not None:
+		config.examples.directory_gold = args.examples_directory_gold
+	if args.examples_directory_blind is not None:
+		config.examples.directory_blind = args.examples_directory_blind
 	if args.prompt_template is not None:
 		config.prompt.template = args.prompt_template
 	if args.prompt_construction_strategy is not None:

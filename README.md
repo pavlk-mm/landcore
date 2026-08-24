@@ -27,4 +27,7 @@ Note that a single annotation by the default DeepSeek model costs about 4-6 doll
 ```bash
 bash landcore_demo.sh --or-api-key <YOUR_OPEN_ROUTER_API_KEY> --or-model <OPENROUTER_ID_OF_YOUR_MODEL>
 ```
-Further modifications can be done in the config file.
+Further modifications can be done in the config file. The config file can be specified:
+```bash
+bash landcore_demo.sh --or-api-key <YOUR_OPEN_ROUTER_API_KEY> --or-model <OPENROUTER_ID_OF_YOUR_MODEL> --config <PATH_TO_YOUR_CONFIG_FILE>
+```

@@ -1,3 +1,10 @@
+experiment:
+  annotation_format: eml
+  description: Annotation of the development set using Claude Haiku 4.5 with an improved
+    prompt template.
+  directory: $PATH_TO_OUTPUT_DIRECTORY #final_outputs
+  name: Annotation of dev using DeepSeek 3.2 with improved recall prompt using reindexed
+    examples
 api:
   base_url: https://openrouter.ai/api/v1
   key: $OPENROUTER_API_KEY
@@ -22,13 +29,6 @@ examples:
   directory_blind: $PATH_TO_BLIND_EXAMPLE_DATA
   directory_gold: $PATH_TO_GOLD_EXAMPLE_DATA
   number: 1
-experiment:
-  annotation_format: eml
-  description: Annotation of the development set using DeepSeek 3.2 with an improved
-    prompt template.
-  directory: $PATH_TO_OUTPUT_DIRECTORY #final_outputs
-  name: Annotation of dev using DeepSeek 3.2 with improved recall prompt using reindexed
-    examples
 llm:
   model: anthropic/claude-haiku-4.5
   parameters:

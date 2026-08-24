@@ -1,0 +1,47 @@
+experiment:
+  annotation_format: eml
+  description: Annotation of the test set using DeepSeek 3.2 with an improved prompt
+    template.
+  directory: outputs/demo_ox #final_outputs_deepseek
+  name: Annotation of dev using DeepSeek 3.2 with improved recall prompt using reindexed
+    examples
+api:
+  base_url: https://openrouter.ai/api/v1
+  key: $OPENROUTER_API_KEY # replace with your actual OpenRouter API key or set it as an environment variable
+  provider: OpenRouter
+  requests_per_minute: 20
+  requests_per_minute_by_model:
+    deepseek/deepseek-v3.2: 150
+    openrouter/hunter-alpha: 150
+data:
+  chunk_size:
+    size: 1 # if unchunked, this does not matter
+    unit: words
+  directory: data/blind/dev/entire/txt
+  input_format: plaintext
+  language: auto
+  only_indices_file: null
+examples:
+  choose_strategy: longest
+  chunk_size:
+    size: 500
+    unit: words
+  directory_blind: data/blind/train/example/chunked500/txt
+  directory_gold: data/gold/train/example/chunked500/eml
+  number: 3
+llm:
+  model: 5 #stealth/ox-alpha
+  parameters:
+    temperature: 0.25
+prompt:
+  construction_strategy: simple
+  instructions_directory: prompt_templates
+  template: prompt_templates/language_specific_prompts/$LANGUAGE.txt
+run:
+  attempts: 5           # number of annotation attempts of all documents in the datasets.
+  concurrency: 1000     # maximum number of concurrent requests to the LLM API (e.g., OpenRouter) during the annotation process.
+  retries: 3            # how many times to retry a failed request for a single document (e.g., due to a timeout or a rate limit).)
+  save_intermediate: true # whether to save intermediate results after each attempt (true) or only the final results after all attempts (false).
+  show_progress: true   # whether to show a progress bar(s) for the annotation process.
+  show_separate_progress_bars: false # show separate progress bars for each dataset (e.g., nl_openboek, cs_pdt etc.) or a single progress bar for all datasets combined.
+  skip_existing: true   # whether to skip documents that have already been annotated in the previous attempts
