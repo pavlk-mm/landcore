@@ -107,7 +107,7 @@ annotationArgs+=(--output_dir "$intermediateOutputDir")
 annotationArgs+=(--annotation_format "$intermediateFormat")
 annotationArgs+=(--examples_directory_gold "$examplesIntermediate")
 annotationArgs+=(--prompt_template "$promptIdentification")
-python src/landcore.py "${annotationArgs[@]}" --print_config
+python src/landcore.py "${annotationArgs[@]}" #--print_config
 
 echo "Mention clustering..."
 annotationArgs=(--config "$config")
@@ -119,7 +119,7 @@ if [[ -n "$orModel" ]]; then
 fi
 annotationArgs+=(--examples_directory_blind "$examplesIntermediate")
 annotationArgs+=(--data_directory "$dataIntermediate")
-python src/landcore.py "${annotationArgs[@]}" --print_config
+python src/landcore.py "${annotationArgs[@]}" #--print_config
 
 # Postprocessing
 echo "POSTPROCESSING..."
