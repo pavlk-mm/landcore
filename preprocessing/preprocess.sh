@@ -81,6 +81,10 @@ if [[ $# -lt 2 ]]; then
 	exit 1
 fi
 
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+repo_root="$(cd "$script_dir/.." && pwd)"
+export PYTHONPATH="$repo_root${PYTHONPATH:+:$PYTHONPATH}"
+
 input_file="$1"
 output_dir="$2"
 
@@ -101,7 +105,6 @@ else
 	echo "Chunking documents in $input_file to $chunked"
 	udapy -s .preprocessing.DeleteBridgingAndSplitAntes .preprocessing.Chunker words="$words" <"$input_file" >"$chunked"
 fi
-
 
 if "$skipReindex"; then
 	echo "Skipping reindexing step"
