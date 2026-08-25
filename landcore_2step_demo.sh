@@ -85,6 +85,11 @@ fi
 intermediateOutputDir="$outputDir/$intermediateFormat"
 dataIntermediate="$intermediateOutputDir/results"
 promptIdentification="prompt_templates/mention_identification.txt"
+echo "    suffix: $suffix"
+echo "    intermediateFormat: $intermediateFormat"
+echo "    examplesIntermediate: $examplesIntermediate"
+echo "    intermediateOutputDir: $intermediateOutputDir"
+echo "    promptIdentification: $promptIdentification"
 
 # Preprocessing with make
 echo "PREPROCESSING..."
@@ -95,19 +100,19 @@ done
 
 # Annotation
 echo "ANNOTATION..."
-echo "Mention identification..."
-annotationArgs=(--config "$config")
-if [[ -n "$orApiKey" ]]; then
-	annotationArgs+=(--api_key "$orApiKey")
-fi
-if [[ -n "$orModel" ]]; then
-	annotationArgs+=(--model "$orModel")
-fi
-annotationArgs+=(--output_dir "$intermediateOutputDir")
-annotationArgs+=(--annotation_format "$intermediateFormat")
-annotationArgs+=(--examples_directory_gold "$examplesIntermediate")
-annotationArgs+=(--prompt_template "$promptIdentification")
-python src/landcore.py "${annotationArgs[@]}" #--print_config
+# echo "Mention identification..."
+# annotationArgs=(--config "$config")
+# if [[ -n "$orApiKey" ]]; then
+# 	annotationArgs+=(--api_key "$orApiKey")
+# fi
+# if [[ -n "$orModel" ]]; then
+# 	annotationArgs+=(--model "$orModel")
+# fi
+# annotationArgs+=(--output_dir "$intermediateOutputDir")
+# annotationArgs+=(--annotation_format "$intermediateFormat")
+# annotationArgs+=(--examples_directory_gold "$examplesIntermediate")
+# annotationArgs+=(--prompt_template "$promptIdentification")
+# python src/landcore.py "${annotationArgs[@]}" #--print_config
 
 echo "Mention clustering..."
 annotationArgs=(--config "$config")
@@ -119,6 +124,7 @@ if [[ -n "$orModel" ]]; then
 fi
 annotationArgs+=(--examples_directory_blind "$examplesIntermediate")
 annotationArgs+=(--data_directory "$dataIntermediate")
+annotationArgs+=(--input_format "$intermediateFormat")
 python src/landcore.py "${annotationArgs[@]}" #--print_config
 
 # Postprocessing

@@ -59,7 +59,15 @@ class LLMService:
 				try:
 					response = await self.client.chat.completions.create(
 						model=model,
-						messages=[{"role": "user", "content": prompt}], 
+						messages=[{"role": "user", "content": prompt}],
+						# extra_body={
+						# 	"provider": {
+						# 		#"ignore": ["sambanova", "deepinfra/fp4"],
+						# 		"only" : ["atlas-cloud/fp8", "siliconflow/fp8", "friendli"],
+						# 		"allow_fallbacks": False,
+						# 		#"order": ["atlas-cloud/fp8", "siliconflow/fp8", "digitalocean", "friendli", "parasail/fp8", "alibaba", "google-vertex", "streamlake", "novita/fp8", "baidu/fp8"]
+						# 	}
+						# },
 						**kwargs
 					)
 					self.responses.append(response)

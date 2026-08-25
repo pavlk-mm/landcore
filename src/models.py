@@ -6,6 +6,7 @@ from llm_service import LLMService
 from prompts import Template, Prompt, ExamplePrompt
 from chunks import Chunk
 from examples import Example
+from response_processing import extract_final_output
 
 class Model:
 	def __init__(self, llm_service: LLMService, model_name: str, prompt_template: Template, output_format: str = "plaintext", model_parameters: dict = {}):
@@ -26,6 +27,8 @@ class Model:
 		success, response = await self.llm_service.generate(rendered_prompt, model=self.model_name, **self.model_parameters)
 		logging.info(f"Generated response for input chunk with metadata {input_chunk.metadata} (Success: {success}).")
 		logging.debug(f"Received RESPONSE for input chunk with metadata {input_chunk.metadata} (Success: {success}):\n{response}")
+		if self.output_format == "mmle" and isinstance(response, str):
+			response = extract_final_output(response)
 		return Chunk(
 			response,
 			metadata={"input_chunk": input_chunk, "success": success, "corpus": input_chunk.metadata.get("corpus"), "index": input_chunk.metadata.get("index"), "model": self.model_name},

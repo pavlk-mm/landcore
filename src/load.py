@@ -1,5 +1,6 @@
 """Load text chunks from the input files."""
 
+import logging
 import os
 import yaml
 import json
@@ -27,9 +28,15 @@ def load_corpus(file_path: str) -> list[str]:
 	with open(file_path, 'r', encoding='utf-8') as f:
 		return [line.strip() for line in f]
 
+def load_mml_examples(file_path: str) -> list[str]:
+	"""Load MML examples from the input file."""
+	with open(file_path, 'r', encoding='utf-8') as f:
+		text = f.read()
+	return text.split("\n\n")
+
 def extract_corpus_name(file_path: str) -> str:
 	"""Extract the corpus name from the file path."""
-	return os.path.basename(file_path).split('-')[0]
+	return os.path.basename(file_path).split('.')[0].split('-')[0]
 
 def load_corpora(file_paths: list[str], format: str = 'plaintext') -> dict[str, list[str]]:
 	"""Load text chunks from multiple input files and organize them by corpus name."""
@@ -38,6 +45,8 @@ def load_corpora(file_paths: list[str], format: str = 'plaintext') -> dict[str, 
 		corpus_name = extract_corpus_name(file_path)
 		if format == 'json':
 			corpora[corpus_name] = load_json_corpus(file_path)
+		elif format == 'mmle':
+			corpora[corpus_name] = load_mml_examples(file_path)
 		else:
 			corpora[corpus_name] = load_corpus(file_path)
 	return corpora
@@ -56,6 +65,8 @@ def find_all_corpora(directory: str, suffix: str = '.txt', include_subdirectorie
 def load_corpora_from_directory(directory: str, suffix: str = '.txt', include_subdirectories: bool = False) -> dict[str, list[str]]:
 	"""Load text chunks from all text files in the given directory and organize them by corpus name."""
 	corpora_files = find_all_corpora(directory, suffix, include_subdirectories)
+	logging.info(f"Found {len(corpora_files)} files with suffix '{suffix}' in directory '{directory}'.")
+	logging.info(f"Loading corpora from files: {corpora_files}")
 	return load_corpora(corpora_files, format=suffix.split('.')[-1])
 
 def load_instruction(file_path: str) -> str:
