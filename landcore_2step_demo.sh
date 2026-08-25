@@ -100,19 +100,19 @@ done
 
 # Annotation
 echo "ANNOTATION..."
-# echo "Mention identification..."
-# annotationArgs=(--config "$config")
-# if [[ -n "$orApiKey" ]]; then
-# 	annotationArgs+=(--api_key "$orApiKey")
-# fi
-# if [[ -n "$orModel" ]]; then
-# 	annotationArgs+=(--model "$orModel")
-# fi
-# annotationArgs+=(--output_dir "$intermediateOutputDir")
-# annotationArgs+=(--annotation_format "$intermediateFormat")
-# annotationArgs+=(--examples_directory_gold "$examplesIntermediate")
-# annotationArgs+=(--prompt_template "$promptIdentification")
-# python src/landcore.py "${annotationArgs[@]}" #--print_config
+echo "Mention identification..."
+annotationArgs=(--config "$config")
+if [[ -n "$orApiKey" ]]; then
+	annotationArgs+=(--api_key "$orApiKey")
+fi
+if [[ -n "$orModel" ]]; then
+	annotationArgs+=(--model "$orModel")
+fi
+annotationArgs+=(--output_dir "$intermediateOutputDir")
+annotationArgs+=(--annotation_format "$intermediateFormat")
+annotationArgs+=(--examples_directory_gold "$examplesIntermediate")
+annotationArgs+=(--prompt_template "$promptIdentification")
+python src/landcore.py "${annotationArgs[@]}" #--print_config
 
 echo "Mention clustering..."
 annotationArgs=(--config "$config")
